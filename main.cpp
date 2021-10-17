@@ -17,15 +17,11 @@ bool IsEmptyLine(const string& str){
     return false;
 }
 
-int main() {
-    ifstream inpfile("input.txt");
-    ofstream outfile("output.txt");
-
+void FindEmptyLinesInFile(ifstream& inpfile, ofstream& outfile){
     if (!inpfile || !outfile) {
         cerr << "Something goes wrong with files";
-        return 1;
+        return;
     }
-
     int line_number = 1, empty_line_number;
     int empty_lines_counter = 0;
     while (inpfile) {
@@ -43,5 +39,11 @@ int main() {
         }
         line_number++;
     }
+}
+
+int main() {
+    ifstream inpfile("input.txt");
+    ofstream outfile("output.txt");
+    FindEmptyLinesInFile(inpfile, outfile);  
     return 0;
 }
